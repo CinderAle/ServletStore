@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ServletStore">
+    <output-path>$PROJECT_DIR$/out/artifacts/ServletStore</output-path>
+    <root id="root" />
+  </artifact>
+</component>

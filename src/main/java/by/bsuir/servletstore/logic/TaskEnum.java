@@ -1,0 +1,33 @@
+package by.bsuir.servletstore.logic;
+
+public enum TaskEnum {
+    ADD_CART_ITEM,
+    ADD_COUPON,
+    ADD_PRODUCT,
+    ADD_SALE,
+    ADD_USER_COUPON,
+    EDIT_CART_ITEM,
+    EDIT_COUPON,
+    EDIT_PRODUCT,
+    EDIT_SALE,
+    EDIT_USER,
+    GET_COUPONS,
+    GET_COUPON,
+    GET_PRODUCTS,
+    GET_PRODUCT,
+    GET_SALES,
+    GET_SALE,
+    GET_USER_CART,
+    GET_USER_COUPON,
+    DO_LOGIN,
+    DO_LOGOUT,
+    DO_REGISTER,
+    REMOVE_CART_ITEM,
+    REMOVE_CART,
+    REMOVE_COUPON,
+    REMOVE_PRODUCT,
+    REMOVE_SALE,
+    REMOVE_USER_COUPON,
+    UNKNOWN_TASK,
+    COUNT_TASKS
+}
