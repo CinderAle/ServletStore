@@ -22,7 +22,7 @@ public class LoginTask implements ITask {
                 throw new RuntimeException("It seems you have banned from our platform");
             }
             request.getSession().setAttribute("user", user);
-            request.setAttribute("automaticLog", true);
+            request.setAttribute("loginFlag", true);
             return JspPages.LOGIN_PAGE;
         }
         catch(RuntimeException e) {

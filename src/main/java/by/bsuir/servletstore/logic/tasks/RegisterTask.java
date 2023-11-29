@@ -33,7 +33,7 @@ public class RegisterTask implements ITask {
         }
         try {
             int userId = authDAO.registerUser(name, email, password);
-            return JspPages.CATALOGUE_PAGE;
+            return JspPages.LOGIN_PAGE;
         }
         catch(RuntimeException e) {
             request.setAttribute("error", e.getMessage());

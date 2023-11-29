@@ -19,6 +19,7 @@ public enum TaskEnum {
     GET_SALE,
     GET_USER_CART,
     GET_USER_COUPON,
+    GET_USERS,
     DO_LOGIN,
     DO_LOGOUT,
     DO_REGISTER,

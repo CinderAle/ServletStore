@@ -4,6 +4,7 @@ import by.bsuir.servletstore.controller.JspPages;
 import by.bsuir.servletstore.dao.ProductsDAO;
 import by.bsuir.servletstore.dao.implementaion.StoreProductsDAO;
 import by.bsuir.servletstore.logic.ITask;
+import by.bsuir.servletstore.logic.TaskEnum;
 import by.bsuir.servletstore.logic.TaskException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
@@ -18,7 +19,7 @@ public class EditCartItemTask implements ITask {
         String quantity = request.getParameter("quantity");
         try {
             productsDAO.editCartItem(Integer.parseInt(userId), Integer.parseInt(product), Integer.parseInt(quantity));
-            return JspPages.CART_PAGE;
+            return new GetUserCartTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to edit product in the cart!");

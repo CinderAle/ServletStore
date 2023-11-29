@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ECE2D0;
+}
+
+.displayContainer {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.shopItemsList {
+    width: 100%;
+}
+
+.shopItemsList .displayContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.shopItem {
+    width: 400px;
+    margin: 25px 25px 0px;
+    text-align: center;
+    background: rgba(255,255,255,0.2);
+    border-radius: 5px;
+    border: 5px solid #CBBFA9;
+    transition: .3s;
+}
+
+.shopItem:hover {
+    border-color: #A7DAD9;
+}
+
+.sale::before{
+    content: 'Sale';
+    display: block;
+    position: absolute;
+    width: 60px;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-bottom-right-radius: 10px;
+    border-right: 5px solid #CBBFA9;
+    border-bottom: 5px solid #CBBFA9;
+    background-color: #CBBFA9;
+    color: #fff;
+    z-index: 2;
+    transition: .3s;
+}
+
+.sale:hover::before {
+    background-color: #A7DAD9;
+    border-right: 5px solid #A7DAD9;
+    border-bottom: 5px solid #A7DAD9;
+}
+
+.shopItem .imageContainer {
+    display: block;
+    width: 100%;
+    height: 225px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    cursor: zoom-in;
+    transition: .3s;
+}
+
+.imageContainer img:hover {
+    transform: scale(1.05);
+}
+
+.shopItemDescription {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    margin-right: 25px;
+}
+
+.shopItemDescription h2 {
+    font-size: 30px;
+    margin: 5px 0 0;
+    color: #948b7b;
+}
+
+.shopItemDescription button {
+    font-size: 20px;
+    margin: 10px auto;
+    width: 100%;
+    background-color: #CBBFA9;
+    font-weight: bolder;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.shopItemDescription button:hover {
+    background-color: #A7DAD9;
+}
+
+footer {
+    margin-top: 25px;
+    width: 100%;
+    height: 200px;
+    background-color: #333;
+}

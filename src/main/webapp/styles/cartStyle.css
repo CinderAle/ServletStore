@@ -1,0 +1,131 @@
+body {
+    margin:0;
+    padding: 0;
+    background-color: #ECE2D0;
+}
+
+.displayContainer {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.cartContainer {
+    margin: 20px auto;
+    width: 90%;
+    background-color: #CBBFA9;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.itemContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cartItem {
+    width: 95%;
+    border-radius: 5px;
+    border: 2px solid #948b7b;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    align-items: center;
+    color: #948b7b;
+}
+
+.itemImageContainer {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.itemImageContainer img {
+    width: 100%;
+    height: 100%;
+}
+
+.itemQuantityBlock {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #948b7b;
+    margin: 10px;
+}
+
+.itemQuantityBlock p {
+    border-top: 2px solid #948b7b;
+    border-bottom: 2px solid #948b7b;
+    box-sizing: border-box;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.itemQuantityBlock form {
+    margin: 0;
+}
+
+.itemQuantityBlock form input[type=submit] {
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 0;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    color: #948b7b;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.itemQuantityBlock form input[type=submit]:hover {
+    border-color: #688585;
+}
+
+.itemQuantityBlock .minusQuantity {
+    border-radius: 5px 0 0 5px;
+}
+
+.itemQuantityBlock .plusQuantity {
+    border-radius: 0 5px 5px 0;
+}
+
+.cartTotalSum {
+    display: block;
+    width: 95%;
+    color: #948b7b;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.buyCartForm {
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+}
+
+.buyCartForm button {
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    background-color: #CBBFA9;
+    color: #948b7b;
+    border: 2px solid #948b7b;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    transition: .3s;
+}
+
+.buyCartForm button:hover {
+    border-color: #688585;
+    color: #688585;
+}

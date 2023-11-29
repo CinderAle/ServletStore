@@ -22,7 +22,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public int addProduct(String name, String image, float price) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into Products(name, image, price) values (?,?,?)", new String[]{"id"});
+            PreparedStatement statement = connection.prepareStatement("insert into Products(name, picture, price) values (?,?,?)", new String[]{"id"});
             statement.setString(1, name);
             statement.setString(2, image);
             statement.setFloat(3, price);
@@ -70,7 +70,7 @@ public class StoreProductsDAO implements ProductsDAO {
                 int id = result.getInt("id");
                 float price = result.getFloat("price");
                 String name = result.getString("name");
-                String image = result.getString("image");
+                String image = result.getString("picture");
                 products.add(new Product(name, image, price, id));
             }
             pool.releaseConnection(connection);
@@ -86,7 +86,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void removeProduct(int id) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("delete * from Products where id = ?");
+            PreparedStatement statement = connection.prepareStatement("delete from Products where `id` = ?");
             statement.setInt(1, id);
             statement.executeUpdate();
             pool.releaseConnection(connection);
@@ -138,7 +138,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void removeSale(int productId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("delete * from Sales where product = ?");
+            PreparedStatement statement = connection.prepareStatement("delete from Sales where `product` = ?");
             statement.setInt(1, productId);
             statement.executeUpdate();
             pool.releaseConnection(connection);
@@ -213,7 +213,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void removeCoupon(int id) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("delete * from Coupons where id = ?");
+            PreparedStatement statement = connection.prepareStatement("delete from Coupons where `id` = ?");
             statement.setInt(1, id);
             statement.executeUpdate();
             pool.releaseConnection(connection);
@@ -276,7 +276,7 @@ public class StoreProductsDAO implements ProductsDAO {
                 return new Sale(productId, sale);
             }
             pool.releaseConnection(connection);
-            throw new Exception("Sale not found");
+            return null;
         }
         catch(Exception e) {
             pool.releaseConnection(connection);
@@ -310,7 +310,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public Product getProduct(int productId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from Products where id = ?");
+            PreparedStatement statement = connection.prepareStatement("select * from Products where `id` = ?");
             statement.setInt(1, productId);
             ResultSet result = statement.executeQuery();
             if(result.next()) {
@@ -333,10 +333,11 @@ public class StoreProductsDAO implements ProductsDAO {
     public void addUserCartItem(int userId, int productId, int quantity) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into Carts(user, product, quantity) values (?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("insert into Carts(`user`, `product`, `quantity`) values (?,?,?) on duplicate key update `quantity`=`quantity` + ?");
             statement.setInt(1, userId);
             statement.setInt(2, productId);
             statement.setInt(3, quantity);
+            statement.setInt(4, quantity);
             statement.executeUpdate();
             pool.releaseConnection(connection);
         }
@@ -351,7 +352,7 @@ public class StoreProductsDAO implements ProductsDAO {
         Map<Integer, Integer> cart = new HashMap<>();
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from Carts where 'user' = ?");
+            PreparedStatement statement = connection.prepareStatement("select * from Carts where `user` = ?");
             statement.setInt(1, userId);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
@@ -372,7 +373,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void removeFromUserCart(int userId, int productId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("delete * from Carts where ('user' = ? and product = ?)");
+            PreparedStatement statement = connection.prepareStatement("delete from Carts where (`user` = ? and `product` = ?)");
             statement.setInt(1, userId);
             statement.setInt(2, productId);
             statement.executeUpdate();
@@ -388,7 +389,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void clearUserCart(int userId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("delete * from Carts where 'user' = ?");
+            PreparedStatement statement = connection.prepareStatement("delete from Carts where `user` = ?");
             statement.setInt(1, userId);
             statement.executeUpdate();
             pool.releaseConnection(connection);
@@ -403,7 +404,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void addUserCoupon(int userId, int couponId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into 'user coupons'('user', 'coupon') values (?,?)");
+            PreparedStatement statement = connection.prepareStatement("insert into 'user coupons'(`user`, `coupon`) values (?,?)");
             statement.setInt(1, userId);
             statement.setInt(2, couponId);
             statement.executeUpdate();
@@ -419,7 +420,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public int getUserCouponId(int userId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from 'user coupons' where 'user' = ?");
+            PreparedStatement statement = connection.prepareStatement("select * from 'user coupons' where `user` = ?");
             statement.setInt(1, userId);
             ResultSet result = statement.executeQuery();
             if(result.next()) {
@@ -440,7 +441,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void removeUserCoupon(int userId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("delete * from 'user coupons' where 'user' = ?");
+            PreparedStatement statement = connection.prepareStatement("delete from 'user coupons' where `user` = ?");
             statement.setInt(1, userId);
             statement.executeUpdate();
             pool.releaseConnection(connection);
@@ -455,10 +456,13 @@ public class StoreProductsDAO implements ProductsDAO {
     public void editCartItem(int userId, int productId, int quantity) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("update Carts set quantity = ? where ('user' = ? and 'product' = ?)");
+            PreparedStatement statement = connection.prepareStatement("update Carts set quantity = ? where (`user` = ? and `product` = ?)");
             statement.setInt(1, quantity);
             statement.setInt(2, userId);
             statement.setInt(3, productId);
+            statement.executeUpdate();
+            statement = connection.prepareStatement("delete from Carts where `user` = ? and `quantity` <= 0");
+            statement.setInt(1, userId);
             statement.executeUpdate();
             pool.releaseConnection(connection);
         }

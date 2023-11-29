@@ -16,6 +16,10 @@ public class StoreConnectionPool implements ConnectionPool {
     private final List<Connection> pool = new ArrayList<>();
     private final List<Connection> used = new ArrayList<>();
 
+    private static class SingletonHandler {
+        private static final StoreConnectionPool instance = new StoreConnectionPool();
+    }
+
     private static Connection createConnection(String url, String user, String password) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(url, user, password);
@@ -38,7 +42,7 @@ public class StoreConnectionPool implements ConnectionPool {
     }
 
     public static StoreConnectionPool getInstance() {
-        return new StoreConnectionPool();
+        return SingletonHandler.instance;
     }
 
     @Override

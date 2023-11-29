@@ -18,7 +18,7 @@ public class AddCartItemTask implements ITask {
         String quantity = request.getParameter("quantity");
         try {
             productsDAO.addUserCartItem(Integer.parseInt(userId), Integer.parseInt(productId), Integer.parseInt(quantity));
-            return JspPages.CART_PAGE;
+            return new GetUserCartTask().run(request);
         }
         catch (RuntimeException e) {
             request.setAttribute("error", "Failed to add cart item!");

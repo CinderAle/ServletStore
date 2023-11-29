@@ -3,19 +3,17 @@ package by.bsuir.servletstore.controller;
 import java.io.*;
 
 import by.bsuir.servletstore.logic.ITask;
-import by.bsuir.servletstore.logic.TaskException;
 import by.bsuir.servletstore.logic.TaskSwitch;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 public class Controller extends HttpServlet {
     private static final String ERROR_CONTENT_TYPE = "text/html";
     private static final String ERROR_PAGE = "<h1 style='color:red;text-align:center; margin-top: 100px'>An error occurred!</h1>";
     private static final String PAGE_PATH = "/WEB-INF/pages/%s";
     private static final String PAGE_PARAMETER = "page";
-    private static final String TASK_PARAMETER = "command";
+    private static final String TASK_PARAMETER = "task";
 
     private void fetchErrorPage(HttpServletResponse response) throws IOException {
         response.setContentType(ERROR_CONTENT_TYPE);
@@ -28,7 +26,7 @@ public class Controller extends HttpServlet {
         try {
             page = task.run(request);
         }
-        catch (TaskException te) {
+        catch (Exception e) {
             page = JspPages.ERROR_PAGE;
         }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);

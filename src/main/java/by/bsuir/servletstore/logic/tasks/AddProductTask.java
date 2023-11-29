@@ -18,7 +18,7 @@ public class AddProductTask implements ITask {
         String productImage = request.getParameter("newProductImage");
         try {
             if(productsDAO.addProduct(productName, productImage, Float.parseFloat(productPrice)) > 0) {
-                return JspPages.ADMIN_PANEL_PAGE;
+                return new GetUsersTask().run(request);
             }
             throw new RuntimeException("Could not add the product!");
         }

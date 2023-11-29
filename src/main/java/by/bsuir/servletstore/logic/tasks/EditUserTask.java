@@ -19,7 +19,7 @@ public class EditUserTask implements ITask {
         String userRole = request.getParameter("userRole");
         try {
             userControlDAO.setUserInfo(Integer.parseInt(userId), Integer.parseInt(userRole), Boolean.parseBoolean(banState));
-            return JspPages.ADMIN_PANEL_PAGE;
+            return new GetUsersTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to edit the user!");

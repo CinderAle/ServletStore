@@ -5,6 +5,7 @@ import by.bsuir.servletstore.logic.tasks.*;
 import java.util.HashMap;
 
 public final class TaskSwitch {
+    private static final TaskSwitch instance = new TaskSwitch();
     private final HashMap<TaskEnum, ITask> taskHashMap = new HashMap<>();
     public TaskSwitch() {
         taskHashMap.put(TaskEnum.ADD_CART_ITEM, new AddCartItemTask());
@@ -25,6 +26,7 @@ public final class TaskSwitch {
         taskHashMap.put(TaskEnum.GET_SALE, new GetSaleTask());
         taskHashMap.put(TaskEnum.GET_USER_CART, new GetUserCartTask());
         taskHashMap.put(TaskEnum.GET_USER_COUPON, new GetUserCouponTask());
+        taskHashMap.put(TaskEnum.GET_USERS, new GetUsersTask());
         taskHashMap.put(TaskEnum.DO_LOGIN, new LoginTask());
         taskHashMap.put(TaskEnum.DO_LOGOUT, new LogoutTask());
         taskHashMap.put(TaskEnum.DO_REGISTER, new RegisterTask());
@@ -38,10 +40,20 @@ public final class TaskSwitch {
     }
 
     public static TaskSwitch getInstance() {
-        return new TaskSwitch();
+        return instance;
     }
 
     public ITask getTask(String taskName) {
-        return taskHashMap.get(taskName);
+        if(taskName == null) {
+            return taskHashMap.get(TaskEnum.UNKNOWN_TASK);
+        }
+        TaskEnum task;
+        try {
+            task = TaskEnum.valueOf(taskName.toUpperCase());
+        }
+        catch(Exception e) {
+            return taskHashMap.get(TaskEnum.UNKNOWN_TASK);
+        }
+        return taskHashMap.get(task);
     }
 }

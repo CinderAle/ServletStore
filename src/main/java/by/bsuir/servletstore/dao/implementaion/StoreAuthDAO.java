@@ -40,7 +40,7 @@ public class StoreAuthDAO implements AuthDAO {
         }
         catch(Exception e) {
             pool.releaseConnection(connection);
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -48,10 +48,12 @@ public class StoreAuthDAO implements AuthDAO {
     public int registerUser(String name, String email, String password) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into Users(name, email, password) values (?,?,?)", new String[]{"id"});
+            PreparedStatement statement = connection.prepareStatement("insert into Users(name, email, password, banned, role) values (?,?,?,?,?)", new String[]{"id"});
             statement.setString(1, name);
             statement.setString(2, email);
             statement.setString(3, password);
+            statement.setBoolean(4, false);
+            statement.setInt(5, 2);
             statement.executeUpdate();
             ResultSet result = statement.getGeneratedKeys();
             int userID = 0;
@@ -60,7 +62,6 @@ public class StoreAuthDAO implements AuthDAO {
             }
             pool.releaseConnection(connection);
             return userID;
-
         }
         catch (Exception e) {
             pool.releaseConnection(connection);

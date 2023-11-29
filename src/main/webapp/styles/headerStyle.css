@@ -1,0 +1,66 @@
+header {
+    width: 100%;
+    background-color: #CBBFA9;
+    margin: 0;
+    border-bottom: 5px solid #333;
+}
+
+header .shopName {
+    margin: 0;
+    color: #333;
+}
+
+header .displayContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navItems {
+    width: 100%;
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.navItems li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.navItems li a {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bolder;
+    transition: .3s;
+    font-size: 20px;
+}
+
+.navItems li:hover a {
+    text-decoration: underline;
+}
+
+.userHeaderName {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #948b7b;
+}
+
+.logoutForm button {
+    padding: 5px;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    transition: .3s;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #948b7b;
+}
+
+.logoutForm button:hover {
+    border-color: darkred;
+    color: darkred;
+}

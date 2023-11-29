@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ECE2D0;
+}
+
+.loginBox {
+    width: 600px;
+    height: 300px;
+    align-self: center;
+    margin: auto;
+    padding: 20px;
+    background-color: #CBBFA9;
+    border-radius: 5px;
+    border: 5px solid #333;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 20px;
+}
+
+.loginBox h1 {
+    margin: 5px 0;
+    text-align: center;
+    color: #333;
+}
+
+.loginBox form {
+    width: 90%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.loginBox form input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 5px auto;
+    padding: 5px 0;
+    outline: none;
+    background-color: #ECE2D0;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    color: #333;
+    transition: .3s;
+}
+
+.loginBox form input:hover {
+    border-color: #333;
+}
+
+.loginBox form input:focus {
+    border-color: #333;
+}
+
+.loginBox form input[type=submit] {
+    box-sizing: border-box;
+    cursor: pointer;
+    border-color: #333;
+    font-weight: bolder;
+}
+
+.loginBox form input[type=submit]:hover {
+    background-color: #CBBFA9;
+}
+
+.registerLink {
+    color: #333;
+}
+
+.registerLink a {
+    color: #688585;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.registerLink a:hover {
+    text-decoration: underline;
+}
