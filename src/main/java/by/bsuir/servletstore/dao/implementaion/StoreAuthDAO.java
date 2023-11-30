@@ -3,6 +3,7 @@ package by.bsuir.servletstore.dao.implementaion;
 import by.bsuir.servletstore.connection.StoreConnectionPool;
 import by.bsuir.servletstore.dao.AuthDAO;
 import by.bsuir.servletstore.entities.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class StoreAuthDAO implements AuthDAO {
             statement.setString(1, email);
             ResultSet result = statement.executeQuery();
             if(result.next()) {
-                if(password.equals(result.getString("password"))) {
+                if(BCrypt.checkpw(password, result.getString("password"))) {
                     int id = result.getInt("id");
                     int role = result.getInt("role");
                     boolean bannedState = result.getBoolean("banned");

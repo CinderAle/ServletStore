@@ -12,7 +12,7 @@ public class StoreConnectionPool implements ConnectionPool {
     private static final String DATABASE_URL = "db.url";
     private static final String DATABASE_USER = "db.user";
     private static final String DATABASE_PASSWORD = "db.password";
-    private static final int INITIAL_POOL_SIZE = 5;
+    private static final int INITIAL_POOL_SIZE = 7;
     private final List<Connection> pool = new ArrayList<>();
     private final List<Connection> used = new ArrayList<>();
 

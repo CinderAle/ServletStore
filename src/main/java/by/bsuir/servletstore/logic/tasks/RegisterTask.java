@@ -10,6 +10,7 @@ import by.bsuir.servletstore.logic.ITask;
 import by.bsuir.servletstore.logic.TaskException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class RegisterTask implements ITask {
             return JspPages.REGISTER_PAGE;
         }
         try {
-            int userId = authDAO.registerUser(name, email, password);
+            int userId = authDAO.registerUser(name, email, BCrypt.hashpw(password, BCrypt.gensalt(8)));
             return JspPages.LOGIN_PAGE;
         }
         catch(RuntimeException e) {

@@ -7,6 +7,11 @@ import by.bsuir.servletstore.entities.Sale;
 import java.util.List;
 import java.util.Map;
 
+/*
+* Interface for accessing products data objects
+* @author CinderAle
+* @version 1.0
+* */
 public interface ProductsDAO {
     int addProduct(String name, String image, float price);
     void editProduct(int id, String name, String image, float price);
