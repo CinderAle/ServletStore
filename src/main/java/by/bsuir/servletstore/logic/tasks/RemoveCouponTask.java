@@ -16,7 +16,7 @@ public class RemoveCouponTask implements ITask {
         String couponId = request.getParameter("couponId");
         try {
             productsDAO.removeCoupon(Integer.parseInt(couponId));
-            return JspPages.ADMIN_SALES_PAGE;
+            return new GetCouponsTask().run(request);
         }
         catch (RuntimeException e) {
             request.setAttribute("error", "Failed to remove the coupon!");

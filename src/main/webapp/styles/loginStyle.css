@@ -83,3 +83,35 @@ body {
 .registerLink a:hover {
     text-decoration: underline;
 }
+
+.changeLanguageForm select {
+    text-align: center;
+    background-color: #CBBFA9;
+    border-radius: 5px;
+    border: 2px solid #948b7b;
+    font-size: 20px;
+    padding: 0 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.changeLanguageForm select option {
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #333;
+}
+
+.changeLanguageForm select:hover {
+    border-color: #333;
+}
+
+.controlBlock form {
+    width: 200px;
+}
+
+.controlBlock {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: row;
+}

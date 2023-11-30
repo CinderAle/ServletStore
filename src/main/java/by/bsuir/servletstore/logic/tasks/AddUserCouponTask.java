@@ -3,6 +3,8 @@ package by.bsuir.servletstore.logic.tasks;
 import by.bsuir.servletstore.controller.JspPages;
 import by.bsuir.servletstore.dao.ProductsDAO;
 import by.bsuir.servletstore.dao.implementaion.StoreProductsDAO;
+import by.bsuir.servletstore.entities.Coupon;
+import by.bsuir.servletstore.entities.User;
 import by.bsuir.servletstore.logic.ITask;
 import by.bsuir.servletstore.logic.TaskException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,16 +15,17 @@ public class AddUserCouponTask implements ITask {
     private final ProductsDAO productsDAO = new StoreProductsDAO();
     @Override
     public String run(HttpServletRequest request) throws TaskException {
-        String userId = request.getParameter("userId");
-        String coupon = request.getParameter("coupon");
+        User user = (User) request.getSession().getAttribute("user");
+        String couponName = request.getParameter("couponName").toUpperCase();
         try {
-            productsDAO.addUserCoupon(Integer.parseInt(userId), Integer.parseInt(coupon));
-            return JspPages.CART_PAGE;
+            Coupon coupon = productsDAO.getCoupon(couponName);
+            productsDAO.addUserCoupon(user.getId(), coupon.getId());
+            return new GetUserCartTask().run(request);
         }
         catch(RuntimeException e) {
-            request.setAttribute("error", "Failed to add the coupon!");
-            logger.error(e.getMessage() + " for adding coupon " + coupon);
-            return JspPages.CART_PAGE;
+            request.setAttribute("error", "No such coupon!");
+            logger.error(e.getMessage() + " for adding coupon " + couponName);
+            return new GetUserCartTask().run(request);
         }
     }
 }

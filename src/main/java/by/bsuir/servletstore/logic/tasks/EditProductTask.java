@@ -19,7 +19,7 @@ public class EditProductTask implements ITask {
         String productImage = request.getParameter("productImage");
         try {
             productsDAO.editProduct(Integer.parseInt(productId), productName, productImage, Float.parseFloat(productPrice));
-            return JspPages.CATALOGUE_PAGE;
+            return new GetProductsTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to edit the product!");

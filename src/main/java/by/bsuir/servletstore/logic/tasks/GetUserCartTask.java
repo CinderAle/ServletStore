@@ -3,6 +3,7 @@ package by.bsuir.servletstore.logic.tasks;
 import by.bsuir.servletstore.controller.JspPages;
 import by.bsuir.servletstore.dao.ProductsDAO;
 import by.bsuir.servletstore.dao.implementaion.StoreProductsDAO;
+import by.bsuir.servletstore.entities.Coupon;
 import by.bsuir.servletstore.entities.Product;
 import by.bsuir.servletstore.entities.Sale;
 import by.bsuir.servletstore.entities.User;
@@ -21,11 +22,12 @@ public class GetUserCartTask implements ITask {
     private final ProductsDAO productsDAO = new StoreProductsDAO();
     @Override
     public String run(HttpServletRequest request) throws TaskException {
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
         try {
             float totalSum = 0;
             Map<Integer, Integer> cart = productsDAO.getUserCart(user.getId());
             Map<Integer, Product> cartProducts = new HashMap<>();
+
             for (Integer productId : cart.keySet()) {
                 Product currProduct = productsDAO.getProduct(productId);
                 Sale sale = productsDAO.getSale(currProduct.getId());
@@ -45,7 +47,7 @@ public class GetUserCartTask implements ITask {
             request.setAttribute("cartQuantities", cart);
             request.setAttribute("cartProducts", cartProducts);
 
-            return JspPages.CART_PAGE;
+            return new GetUserCouponTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to get the cart!");

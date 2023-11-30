@@ -15,17 +15,29 @@
 </head>
 <body>
 <div class="loginBox log">
-    <h1>Log in form</h1>
+    <h1><fmt:message key="login_form"/></h1>
     <form action="controller" method="post">
         <input type="hidden" name="task" value="do_login">
-        <label>E-mail</label>
-        <input type="email" name="email" placeholder="E-mail" required>
-        <label>Password</label>
+        <label><fmt:message key="user_email"/></label>
+        <input type="email" name="email" placeholder="johndoe@mail.com" required>
+        <label><fmt:message key="user_password"/></label>
         <input type="password" placeholder="Password"  name="password" required>
-        <input type="submit" value="Log in">
+        <input type="submit" value='<fmt:message key="login_btn"/>'>
         <div>${error}</div>
     </form>
-    <p class="registerLink">Don't have an account? <a href="<c:url value="controller?page=registration.jsp"/>">Register!</a></p>
+    <div class="controlBlock">
+        <p class="registerLink">
+            <fmt:message key="no_account_quest"/>?
+            <a href="<c:url value="controller?page=registration.jsp"/>"><fmt:message key="register_link"/>!</a>
+        </p>
+        <form class="changeLanguageForm" action="controller" method="post">
+            <input type="hidden" name="task" value="change_language">
+            <select name="language" onchange="this.form.submit()">
+                <option value="en" ${sessionScope.lang == 'en' ? 'selected' : ''}>English</option>
+                <option value="ru" ${sessionScope.lang == 'ru' ? 'selected' : ''}>Русский</option>
+            </select>
+        </form>
+    </div>
 </div>
 </body>
 </html>

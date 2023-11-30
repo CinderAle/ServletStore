@@ -19,7 +19,7 @@ public class GetCouponsTask implements ITask {
         try {
             List<Coupon> coupons = productsDAO.getAllCoupons();
             request.setAttribute("coupons", coupons);
-            return JspPages.ADMIN_SALES_PAGE;
+            return new GetSalesTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to fetch all coupons!");

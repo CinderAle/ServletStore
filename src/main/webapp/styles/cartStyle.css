@@ -88,6 +88,7 @@ body {
 
 .itemQuantityBlock form input[type=submit]:hover {
     border-color: #688585;
+    color: #688585;
 }
 
 .itemQuantityBlock .minusQuantity {
@@ -128,4 +129,83 @@ body {
 .buyCartForm button:hover {
     border-color: #688585;
     color: #688585;
+}
+
+.removeCouponForm {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    margin: 10px auto;
+    justify-content: flex-start;
+}
+
+.removeCouponForm h2 {
+    color: #333;
+}
+
+.removeCouponForm button {
+    margin: 15px;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background: rgba(100, 100, 100, 0.75);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.removeCouponForm button:hover {
+    background: #333;
+}
+
+.cartTotalSum span {
+    color: #fff;
+    background: rgba(255,120,120,0.75);
+    border-radius: 5px;
+    margin: 20px;
+    padding: 5px;
+}
+
+.addCouponForm {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    margin: 10px auto;
+    justify-content: flex-start;
+}
+
+.addCouponForm label {
+    color: #333;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.addCouponForm input {
+    outline: none;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #948b7b;
+    padding: 0 5px;
+    margin: 0 10px;
+}
+
+.addCouponForm button {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #fff;
+    background: rgba(100, 100, 100, 0.75);
+    cursor: pointer;
+    transition: .3s;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.addCouponForm button:hover {
+    background-color: #333;
 }

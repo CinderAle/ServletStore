@@ -15,10 +15,10 @@ public class EditCouponTask implements ITask {
     public String run(HttpServletRequest request) throws TaskException {
         String couponId = request.getParameter("couponId");
         String newDiscount = request.getParameter("newCouponSale");
-        String newName = request.getParameter("newCouponName");
+        String newName = request.getParameter("newCouponName").toUpperCase();
         try {
             productsDAO.editCoupon(Integer.parseInt(couponId), newName, Float.parseFloat(newDiscount));
-            return JspPages.ADMIN_SALES_PAGE;
+            return new GetCouponsTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to add the coupon!");

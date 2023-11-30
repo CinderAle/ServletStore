@@ -29,6 +29,7 @@ public enum TaskEnum {
     REMOVE_PRODUCT,
     REMOVE_SALE,
     REMOVE_USER_COUPON,
+    CHANGE_LANGUAGE,
     UNKNOWN_TASK,
     COUNT_TASKS
 }

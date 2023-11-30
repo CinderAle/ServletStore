@@ -16,7 +16,7 @@ public class RemoveSaleTask implements ITask {
         String productId = request.getParameter("removeSaleProduct");
         try {
             productsDAO.removeSale(Integer.parseInt(productId));
-            return JspPages.ADMIN_SALES_PAGE;
+            return new GetCouponsTask().run(request);
         }
         catch (RuntimeException e) {
             request.setAttribute("error", "Failed to remove the sale!");

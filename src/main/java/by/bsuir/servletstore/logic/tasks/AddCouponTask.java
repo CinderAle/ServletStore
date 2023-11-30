@@ -13,11 +13,11 @@ public class AddCouponTask implements ITask {
     private final ProductsDAO productsDAO = new StoreProductsDAO();
     @Override
     public String run(HttpServletRequest request) throws TaskException {
-        String couponName = request.getParameter("newCouponName");
+        String couponName = request.getParameter("newCouponName").toUpperCase();
         String couponSale = request.getParameter("newCouponSale");
         try {
             if(productsDAO.addCoupon(couponName, Float.parseFloat(couponSale)) > 0) {
-                return JspPages.ADMIN_SALES_PAGE;
+                return new GetCouponsTask().run(request);
             }
             throw new RuntimeException("Could not add the coupon!");
         }

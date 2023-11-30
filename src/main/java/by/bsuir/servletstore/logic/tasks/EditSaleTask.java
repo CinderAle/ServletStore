@@ -17,7 +17,7 @@ public class EditSaleTask implements ITask {
         String newSale = request.getParameter("newSaleValue");
         try {
             productsDAO.editSale(Integer.parseInt(productId), Float.parseFloat(newSale));
-            return JspPages.ADMIN_SALES_PAGE;
+            return new GetCouponsTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to edit the sale!");

@@ -36,6 +36,7 @@ public final class TaskSwitch {
         taskHashMap.put(TaskEnum.REMOVE_PRODUCT, new RemoveProductTask());
         taskHashMap.put(TaskEnum.REMOVE_SALE, new RemoveSaleTask());
         taskHashMap.put(TaskEnum.REMOVE_USER_COUPON, new RemoveUserCouponTask());
+        taskHashMap.put(TaskEnum.CHANGE_LANGUAGE, new ChangeLanguageTask());
         taskHashMap.put(TaskEnum.UNKNOWN_TASK, new UnknownTask());
     }
 

@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ECE2D0;
+}
+
+.displayContainer {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.newProductBlock {
+    background-color: #CBBFA9;
+    margin: 10px auto;
+    width: 100%;
+    border: 2px solid #948b7b;
+    border-radius: 5px;
+}
+
+.newProductBlock form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    padding: 25px 0;
+    margin: 0 auto;
+}
+
+.newProductBlock .parameterBlock {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.parameterBlock label {
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #948b7b;
+}
+
+.parameterBlock input {
+    outline: none;
+    width: 100%;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    border-radius: 5px;
+    padding: 0 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    transition: .3s;
+    color: #948b7b;
+}
+
+.parameterBlock input:hover {
+    border-color: #A7DAD9;
+}
+
+.newProductBlock button {
+    width: 100%;
+    border: 2px solid #948b7b;
+    outline: none;
+    background-color: #CBBFA9;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 5px 0;
+    transition: .3s;
+    margin: 25px auto 0;
+    color: #948b7b;
+    cursor: pointer;
+}
+
+.newProductBlock button:hover {
+    border-color: #A7DAD9;
+    color: #A7DAD9;
+}
+
+.userList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    border-radius: 5px;
+}
+
+.userBlock {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #948b7b;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+.userBasicInfo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userBasicInfo h2 {
+    padding: 5px;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.userName {
+    color: #948b7b;
+}
+
+.userEmail {
+    color: #948b7b;
+}
+
+.userBanned {
+    color: #fff;
+    background-color: darkred;
+}
+
+.userNotBanned {
+    color: #fff;
+    background-color: darkgreen;
+}
+
+.userBlock form {
+    margin: 0 20px;
+}
+
+.userBlock form button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.banButton {
+    color: #fff;
+    background-color: darkred;
+}
+
+.unbanButton {
+    color: #fff;
+    background-color: darkgreen;
+}

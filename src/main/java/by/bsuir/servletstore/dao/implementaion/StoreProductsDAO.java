@@ -45,7 +45,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void editProduct(int id, String name, String image, float price) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("update Products set name = ?, image = ?, price = ? where id = ?");
+            PreparedStatement statement = connection.prepareStatement("update Products set name = ?, picture = ?, price = ? where id = ?");
             statement.setString(1, name);
             statement.setString(2, image);
             statement.setFloat(3, price);
@@ -404,7 +404,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void addUserCoupon(int userId, int couponId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("insert into 'user coupons'(`user`, `coupon`) values (?,?)");
+            PreparedStatement statement = connection.prepareStatement("insert into `user coupons`(`users_id`, `coupons_id`) values (?,?)");
             statement.setInt(1, userId);
             statement.setInt(2, couponId);
             statement.executeUpdate();
@@ -420,11 +420,11 @@ public class StoreProductsDAO implements ProductsDAO {
     public int getUserCouponId(int userId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from 'user coupons' where `user` = ?");
+            PreparedStatement statement = connection.prepareStatement("select * from `user coupons` where `users_id` = ?");
             statement.setInt(1, userId);
             ResultSet result = statement.executeQuery();
             if(result.next()) {
-                int couponId = result.getInt("coupon");
+                int couponId = result.getInt("coupons_id");
                 pool.releaseConnection(connection);
                 return couponId;
             }
@@ -441,7 +441,7 @@ public class StoreProductsDAO implements ProductsDAO {
     public void removeUserCoupon(int userId) {
         Connection connection = pool.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("delete from 'user coupons' where `user` = ?");
+            PreparedStatement statement = connection.prepareStatement("delete from `user coupons` where `users_id` = ?");
             statement.setInt(1, userId);
             statement.executeUpdate();
             pool.releaseConnection(connection);

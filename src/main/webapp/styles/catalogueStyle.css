@@ -17,6 +17,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 .shopItem {
@@ -34,7 +35,6 @@ body {
 }
 
 .sale::before{
-    content: 'Sale';
     display: block;
     position: absolute;
     width: 60px;
@@ -113,4 +113,38 @@ footer {
     width: 100%;
     height: 200px;
     background-color: #333;
+}
+
+.editProductForm {
+    display: flex;
+    margin: 10px 0 0;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.editProductForm label {
+    width: 100%;
+    text-align: left;
+    margin: 5px 0;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #948b7b;
+}
+
+.editProductForm input {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 0 5px;
+    outline: none;
+    border: 2px solid #948b7b;
+    background-color: #ECE2D0;
+    color: #948b7b;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.editProductForm input:hover {
+    border-color: #A7DAD9;
 }

@@ -16,7 +16,7 @@ public class RemoveProductTask implements ITask {
         String productId = request.getParameter("productId");
         try {
             productsDAO.removeProduct(Integer.parseInt(productId));
-            return JspPages.CATALOGUE_PAGE;
+            return new GetProductsTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to delete the product!");

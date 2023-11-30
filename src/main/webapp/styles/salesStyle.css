@@ -1,0 +1,227 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ECE2D0;
+}
+
+.displayContainer {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.addBonusesContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    margin: 10px auto;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    border-radius: 5px;
+}
+
+.addCouponForm {
+    border-radius: 5px 0 0 5px;
+}
+
+
+.addSaleForm {
+    border-radius: 0 5px 5px 0;
+}
+
+.addBonusesContainer form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 5px solid #948b7b;
+    margin: 20px;
+    width: 40%;
+    padding: 10px;
+}
+
+.addBonusesContainer label {
+    width: 100%;
+    color: #948b7b;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: left;
+    margin: 5px auto;
+}
+
+.addBonusesContainer input {
+    outline: none;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0 5px;
+    color: #948b7b;
+    margin: 5px auto;
+    width: 100%;
+    font-weight: bolder;
+}
+
+.addBonusesContainer select {
+    outline: none;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0 5px;
+    color: #948b7b;
+    margin: 5px auto;
+    font-weight: bolder;
+    width: 100%;
+}
+
+.addBonusesContainer button {
+    outline: none;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 5px 0;
+    color: #948b7b;
+    margin: 5px auto;
+    width: 100%;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.addBonusesContainer button:hover{
+    border-color: #A7DAD9;
+    color: #A7DAD9;
+}
+
+.addSaleForm h1 {
+    text-align: center;
+    color: #948b7b;
+    margin: 5px;
+}
+
+.bonusesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #CBBFA9;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+.couponsContainer {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+    border: 5px solid #948b7b;
+    border-radius: 5px 0 0 5px;
+}
+
+.salesContainer {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+    border: 5px solid #948b7b;
+    border-radius: 0 5px 5px 0;
+}
+
+.couponItem {
+    width: 95%;
+    border: 2px solid #948b7b;
+    border-radius: 3px;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.saleItem {
+    width: 95%;
+    border: 2px solid #948b7b;
+    border-radius: 3px;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.couponsContainer h2 {
+    text-align: center;
+    color: #948b7b;
+    margin: 10px 0;
+}
+
+.bonusesContainer input {
+    outline: none;
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0 5px;
+    color: #948b7b;
+    margin: 5px auto;
+    width: 100%;
+    font-weight: bolder;
+}
+
+.bonusesContainer label {
+    width: 100%;
+    color: #948b7b;
+    text-align: left;
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.bonusesContainer button {
+    background-color: #CBBFA9;
+    border: 2px solid #948b7b;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0 5px;
+    color: #948b7b;
+    margin: 5px auto;
+    width: 100%;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.bonusesContainer button:hover {
+    border-color: #A7DAD9;
+    color: #A7DAD9;
+}
+
+.bonusesContainer h2 {
+    color: #948b7b;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.bonusesContainer form {
+    width: 100%;
+}
+
+.imageContainer {
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 5px;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+}
+

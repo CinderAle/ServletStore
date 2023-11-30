@@ -14,7 +14,7 @@ public class GetCouponTask implements ITask {
     private final ProductsDAO productsDAO = new StoreProductsDAO();
     @Override
     public String run(HttpServletRequest request) throws TaskException {
-        String couponName = request.getParameter("couponName");
+        String couponName = request.getParameter("couponName").toUpperCase();
         try {
             Coupon coupon = productsDAO.getCoupon(couponName);
             request.setAttribute("coupon", coupon);

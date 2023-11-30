@@ -51,14 +51,31 @@
                 </div>
             </c:forEach>
             </div>
-            <h1 class="cartTotalSum">Total sum: ${String.format("%.2f",totalSum)}</h1>
+            <c:set var="coupon" value='${requestScope["coupon"]}'/>
+            <c:if test="${coupon == null}">
+                <form class="addCouponForm" method="post" action="controller">
+                    <input type="hidden" name="task" value="add_user_coupon">
+                    <label><fmt:message key="enter_coupon"/></label>
+                    <input type="text" name="couponName">
+                    <button type="submit"><fmt:message key="enter_btn"/></button>
+                </form>
+                <h1 class="cartTotalSum"><fmt:message key="total_sum"/>: ${String.format("%.2f",totalSum)}</h1>
+            </c:if>
+            <c:if test="${coupon != null}">
+                <form class="removeCouponForm" method="post" action="controller">
+                    <h2>${coupon.getName()}</h2>
+                    <input type="hidden" name="task" value="remove_user_coupon">
+                    <button type="submit"><fmt:message key="delete_btn"/></button>
+                </form>
+                <h1 class="cartTotalSum"><fmt:message key="total_sum"/>: ${requestScope["couponSum"]}<span>-${coupon.getSale()}%</span></h1>
+            </c:if>
             <form class="buyCartForm" method="post" action="controller">
                 <input type="hidden" name="task" value="remove_cart">
-                <button type="submit">Buy</button>
+                <button type="submit"><fmt:message key="buy_btn"/></button>
             </form>
         </c:if>
         <c:if test="${cartProducts.size() == 0}">
-            <h1>No products here yet.</h1>
+            <h1><fmt:message key="no_products"/></h1>
         </c:if>
         </div>
     </div>

@@ -4,6 +4,7 @@ import java.io.*;
 
 import by.bsuir.servletstore.logic.ITask;
 import by.bsuir.servletstore.logic.TaskSwitch;
+import by.bsuir.servletstore.logic.tasks.ChangeLanguageTask;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -29,12 +30,16 @@ public class Controller extends HttpServlet {
         catch (Exception e) {
             page = JspPages.ERROR_PAGE;
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
-        if (requestDispatcher != null) {
-            requestDispatcher.forward(request, response);
+        if(task instanceof ChangeLanguageTask) {
+            response.sendRedirect(page);
         }
         else {
-            fetchErrorPage(response);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
+            if (requestDispatcher != null) {
+                requestDispatcher.forward(request, response);
+            } else {
+                fetchErrorPage(response);
+            }
         }
     }
 

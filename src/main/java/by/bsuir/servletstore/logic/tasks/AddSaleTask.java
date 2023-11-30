@@ -17,7 +17,7 @@ public class AddSaleTask implements ITask {
         String sale = request.getParameter("newSaleSize");
         try {
             productsDAO.addSale(Integer.parseInt(product), Float.parseFloat(sale));
-            return JspPages.ADMIN_SALES_PAGE;
+            return new GetCouponsTask().run(request);
         }
         catch(RuntimeException e) {
             request.setAttribute("error", "Failed to add the sale!");
